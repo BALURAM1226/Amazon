@@ -4,6 +4,7 @@ const stripe = require("stripe")("sk_test_51ItAJ3SCvcRdNxPbdzp8Rp90PwPjubF3oKWUe
 const uuid = require("uuid/v4");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -60,4 +61,4 @@ app.post("/checkout", async (req, res) => {
   res.json({ error, status });
 });
 
-app.listen(3000);
+app.listen(PORT);
