@@ -11,7 +11,7 @@ app.use(cors());
 
 
 app.get("/", (req, res) => {
-  res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
+  res.send("Server is working fine !");
 });
 
 app.post("/checkout", async (req, res) => {
