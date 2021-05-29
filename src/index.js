@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 
 
-const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io';
+const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io/checkout';
 
 app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
