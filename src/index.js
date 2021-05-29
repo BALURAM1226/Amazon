@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 
 
-const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io/create-checkout-session';
+const YOUR_DOMAIN = 'https://amzon-clone.herokuapp.com/';
 
 app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
