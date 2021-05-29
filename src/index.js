@@ -2,10 +2,13 @@ const stripe = require("stripe")("sk_test_51ItAJ3SCvcRdNxPbdzp8Rp90PwPjubF3oKWUe
 const express = require('express');
 const app = express();
 app.use(express.static('.'));
+
+app.get('/', (req, res) => {
+	res.send('Server Running');
+});
+
 const PORT = process.env.PORT || 3000;
-app.get('/', (res, req) =>{
-   res.send("server is working ");
-})
+
 const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io/checkout';
 
 app.post('/create-checkout-session', async (req, res) => {
