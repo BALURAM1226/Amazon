@@ -8,6 +8,9 @@
      "dev" : "nodemon src/index.js"
     
   },
+   "engines": {
+    "node": "14.15.4"
+   },
   "keywords": [],
   "author": "kumavat baluram",
   "license": "ISC",
