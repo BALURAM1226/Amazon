@@ -60,5 +60,5 @@ app.post("/checkout", async (req, res) => {
 
   res.json({ error, status });
 });
+app.listen(process.env.PORT || 5000, () => { console.log("Server is running");} )
 
-app.listen(PORT);
