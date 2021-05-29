@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 app.use(express.static('.'));
 
-const PORT = Process.env.PORT || 3000;
+const PORT = Process.env.PORT || 8000;
 app.get('/', (res, req) =>{
    res.send("server is working ");
 })
@@ -33,4 +33,4 @@ app.post('/create-checkout-session', async (req, res) => {
   res.json({ id: session.id });
 });
 
-app.listen(PORT, () => console.log('Running on port 4242'));
+app.listen(PORT, () => console.log('Running on port 8000'));
