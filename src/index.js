@@ -1,64 +1,36 @@
-const cors = require("cors");
-const express = require("express");
 const stripe = require("stripe")("sk_test_51ItAJ3SCvcRdNxPbdzp8Rp90PwPjubF3oKWUeiidmlWO3UuIz8Oecl1S8AMtPrSyaRY8OrktyfZ4kQ1rJScE4E7700mrWFi2vd");
-const uuid = require("uuid/v4");
-
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(express.static('.'));
 
-app.use(express.json());
-app.use(cors());
+const PORT = Process.env.PORT || 3000;
+app.get('/', (res, req) =>{
+   res.send("server is working ");
+})
+const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io/checkout';
 
-
-
-app.get("/", (req, res) => {
-  res.send("Server is working fine !");
-});
-
-app.post("/checkout", async (req, res) => {
-  console.log("Request:", req.body);
-
-  let error;
-  let status;
-  try {
-    const { product, token } = req.body;
-
-    const customer = await stripe.customers.create({
-      email: token.email,
-      source: token.id
-    });
-
-    const idempotency_key = uuid();
-    const charge = await stripe.charges.create(
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
       {
-        amount: product.price * 100,
-        currency: "usd",
-        customer: customer.id,
-        receipt_email: token.email,
-        description: `Purchased the ${product.name}`,
-        shipping: {
-          name: token.card.name,
-          address: {
-            line1: token.card.address_line1,
-            line2: token.card.address_line2,
-            city: token.card.address_city,
-            country: token.card.address_country,
-            postal_code: token.card.address_zip
-          }
-        }
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Stubborn Attachments',
+            images: ['https://i.imgur.com/EHyR2nP.png'],
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
       },
-      {
-        idempotency_key
-      }
-    );
-    console.log("Charge:", { charge });
-    status = "success";
-  } catch (error) {
-    console.error("Error:", error);
-    status = "failure";
-  }
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}?success=true`,
+    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+  });
 
-  res.json({ error, status });
+  res.json({ id: session.id });
 });
-app.listen(process.env.PORT || 5000, () => { console.log("Server is running");} )
 
+app.listen(PORT, () => console.log('Running on port 4242'));
