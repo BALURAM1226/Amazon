@@ -1,13 +1,15 @@
 const stripe = require("stripe")("sk_test_51ItAJ3SCvcRdNxPbdzp8Rp90PwPjubF3oKWUeiidmlWO3UuIz8Oecl1S8AMtPrSyaRY8OrktyfZ4kQ1rJScE4E7700mrWFi2vd");
 const express = require('express');
 const app = express();
+
 app.use(express.static('.'));
 
+const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
 	res.send('Server Running');
 });
 
-const PORT = process.env.PORT || 3000;
+
 
 const YOUR_DOMAIN = 'https://react-thgnk4.stackblitz.io/checkout';
 
