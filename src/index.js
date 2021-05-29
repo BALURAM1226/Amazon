@@ -30,8 +30,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+    success_url: `https://react-thgnk4.stackblitz.io/checkout/success.html`,
+    cancel_url: `https://react-thgnk4.stackblitz.io/checkout/canceled.html`,
   });
 
   res.json({ id: session.id });
