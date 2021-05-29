@@ -2,8 +2,7 @@ const stripe = require("stripe")("sk_test_51ItAJ3SCvcRdNxPbdzp8Rp90PwPjubF3oKWUe
 const express = require('express');
 const app = express();
 app.use(express.static('.'));
-
-const PORT = Process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 app.get('/', (res, req) =>{
    res.send("server is working ");
 })
@@ -33,4 +32,4 @@ app.post('/create-checkout-session', async (req, res) => {
   res.json({ id: session.id });
 });
 
-app.listen(PORT, () => console.log('Running on port 8000'));
+app.listen(PORT, () => console.log('Running on port 3000'));
