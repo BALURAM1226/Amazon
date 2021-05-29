@@ -1,7 +1,7 @@
 {
-  "name": "node-stripe-checkout-final",
+  "name": "amazon-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "amazon-server",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -9,7 +9,7 @@
     
   },
   "keywords": [],
-  "author": "",
+  "author": "kumavat baluram",
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.4",
